@@ -1,8 +1,9 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 
 export const useSidebarStore = defineStore("sidebar", () => {
-  const visibility = ref(true);
+  const visibility = ref(useStorage("visibility", true));
 
   const toggleVisibility = () => {
     visibility.value = !visibility.value;
@@ -12,7 +13,7 @@ export const useSidebarStore = defineStore("sidebar", () => {
     visibility.value = value;
   };
 
-  const unfoldablity = ref(true);
+  const unfoldablity = ref(useStorage("unfoldablity", true));
 
   const toggleUnfoldablity = () => {
     unfoldablity.value = !unfoldablity.value;
